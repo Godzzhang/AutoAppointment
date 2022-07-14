@@ -66,7 +66,15 @@ m = None
 a = None
 
 #等待开始
-
+while True:
+    utc_now = datetime.utcnow().replace(tzinfo=timezone.utc)
+    beijing_now = utc_now.astimezone(SHA_TZ)
+    hours = int(beijing_now.strftime("%H"))
+    minutes = int(beijing_now.strftime("%M"))
+    seconds = int(beijing_now.strftime("%S"))
+    
+    if hours >= 16 and minutes >= 59 and seconds >= 30:
+        break
 
 print("开腔！")
 
