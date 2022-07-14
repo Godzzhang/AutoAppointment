@@ -1,8 +1,6 @@
 name: Python Package
 
 on:
-  schedule:
-    - cron: "54 16 * * *"
   workflow_dispatch:
   
 jobs:
