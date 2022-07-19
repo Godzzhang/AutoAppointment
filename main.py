@@ -79,6 +79,10 @@ for schedule in schedule_data:
 start_time = datetime.strptime(startTime, "%Y-%m-%d %H:%M:%S")
 start_time_p10s = start_time - timedelta(seconds=10)
 start_time_a10s = start_time + timedelta(seconds=10)
+beijing_now = get_beijing_time()
+
+print("now:", beijing_now)
+print("start time:", start_time_p10s)
 
 #等待开始
 while True:
