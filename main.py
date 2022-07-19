@@ -80,6 +80,7 @@ while True:
     if beijing_now.timestamp() - start_time_p10s.timestamp() >= 0:
         break
     time.sleep(0.1)
+    print("waiting")
 
 #开枪
 while True:
@@ -97,6 +98,10 @@ while True:
     beijing_now = get_beijing_time()
     if beijing_now.timestamp() - start_time_a10s.timestamp() > 0:
         break
+    print("makeing")
+
+print(M)
+print(A)
 
 message = "上午: " + M['msg'] + "\n" + "下午: " + A['msg']
 
