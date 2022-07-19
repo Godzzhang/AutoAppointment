@@ -87,6 +87,7 @@ print("start time:", start_time_p10s)
 #等待开始
 while True:
     beijing_now = get_beijing_time()
+    print(beijing_now.timestamp(), start_time_p10s.timestamp())
     if beijing_now.timestamp() - start_time_p10s.timestamp() >= 0:
         break
     time.sleep(0.1)
