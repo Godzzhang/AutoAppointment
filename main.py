@@ -6,6 +6,8 @@ from datetime import timezone
 from datetime import timedelta
 from datetime import datetime
 
+print("Start Program!")
+
 #准备工作
 SHA_TZ = timezone(
     timedelta(hours=8),
