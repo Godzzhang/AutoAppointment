@@ -23,7 +23,22 @@ def get_beijing_time():
     return beijing_now
     # beijing_tomorrow = beijing_now + timedelta(days=1)
 
-
+def cmp_date(d1, d2):
+    if d1.strftime("%Y") > d2.strftime("%Y"):
+        return True
+    if d1.strftime("%m") > d2.strftime("%m"):
+        return True
+    if d1.strftime("%d") > d2.strftime("%d"):
+        return True
+    if d1.strftime("%H") > d2.strftime("%H"):
+        return True
+    if d1.strftime("%Y") > d2.strftime("%Y"):
+        return True
+    if d1.strftime("%M") > d2.strftime("%M"):
+        return True
+    if d1.strftime("%S") > d2.strftime("%S"):
+        return True
+    return False
 
 unionid = 'oF-BrwFcZMQ-ZVTm-Nz7HtfSpMQY'
 
@@ -83,15 +98,15 @@ beijing_now = get_beijing_time()
 
 print("now:", beijing_now)
 print("start time:", start_time_p10s)
-
+    
 #等待开始
 while True:
     beijing_now = get_beijing_time()
-    print(beijing_now.timestamp(), start_time_p10s.timestamp())
-    if beijing_now.timestamp() - start_time_p10s.timestamp() >= 0:
+    if cmp_date(beijing_now, start_time_p10s):
         break
     time.sleep(0.1)
-    print("waiting")
+    
+print("START")
 
 #开枪
 while True:
