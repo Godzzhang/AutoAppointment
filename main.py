@@ -43,6 +43,8 @@ headers = {
 
 schedule_data = None
 
+print("getting schedule")
+
 #获取时间安排表
 schedule_url = 'https://appointment-backend-cdn.dataesb.com/api/appointment/schedule/?subLibId=881&timestamp={}&callback=%23%2Findex%2F881%3Fcounter%3D1658102400000&subLibId=881'.format(
     int(get_beijing_time().timestamp()))
@@ -50,6 +52,8 @@ respond = requests.get(url=schedule_url, headers=headers, data=data)
 schedule_json = json.loads(respond.text)
 if schedule_json['code'] == 200 and schedule_json['msg'] == '成功':
     schedule_data = schedule_json['data']
+
+print("preparing for appointment")
 
 appointment_url = 'https://appointment-backend-cdn.dataesb.com/api/appointment/pub_add/?timestamp={}&callback=%23%2Findex%2F881%3Fcounter%3D1657670400000'.format(
     int(get_beijing_time().timestamp()))
