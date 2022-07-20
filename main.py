@@ -125,6 +125,7 @@ while True:
     if beijing_now.timestamp() - start_time_a10s.timestamp() > 0:
         break
     print("makeing")
+    time.sleep(0.2)
 
 print(M)
 print(A)
