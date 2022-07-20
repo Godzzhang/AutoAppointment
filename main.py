@@ -65,7 +65,10 @@ print("getting schedule")
 #获取时间安排表
 schedule_url = 'https://appointment-backend-cdn.dataesb.com/api/appointment/schedule/?subLibId=881&timestamp={}&callback=%23%2Findex%2F881%3Fcounter%3D1658102400000&subLibId=881'.format(
     int(get_beijing_time().timestamp()))
-respond = requests.get(url=schedule_url, headers=headers, data=data)
+try:
+    respond = requests.get(url=schedule_url, headers=headers, data=data)
+except:
+    print("failed to get schedule")
 schedule_json = json.loads(respond.text)
 if schedule_json['code'] == 200 and schedule_json['msg'] == '成功':
     schedule_data = schedule_json['data']
@@ -116,8 +119,13 @@ while True:
 
     data_json['scheduleId'] = ids[1]
     data = json.dumps(data_json).encode('utf-8')
-    A = json.loads(requests.post(url=appointment_url, headers=headers, data=data).text)
-
+    
+    try:
+        A = json.loads(requests.post(url=appointment_url, headers=headers, data=data).text)
+    except:
+        print("error")
+    
+    
     if M['msg'] == "成功" and A['msg'] == "成功":
         break
 
