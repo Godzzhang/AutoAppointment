@@ -24,19 +24,7 @@ def get_beijing_time():
     # beijing_tomorrow = beijing_now + timedelta(days=1)
 
 def cmp_date(d1, d2):
-    if d1.strftime("%Y") > d2.strftime("%Y"):
-        return True
-    if d1.strftime("%m") > d2.strftime("%m"):
-        return True
-    if d1.strftime("%d") > d2.strftime("%d"):
-        return True
-    if d1.strftime("%H") > d2.strftime("%H"):
-        return True
-    if d1.strftime("%Y") > d2.strftime("%Y"):
-        return True
-    if d1.strftime("%M") > d2.strftime("%M"):
-        return True
-    if d1.strftime("%S") > d2.strftime("%S"):
+    if d1.strftime("%Y") >= d2.strftime("%Y") and d1.strftime("%m") >= d2.strftime("%m") and d1.strftime("%d") >= d2.strftime("%d") and d1.strftime("%H") >= d2.strftime("%H") and d1.strftime("%M") >= d2.strftime("%M") and d1.strftime("%S") >= d2.strftime("%S"):
         return True
     return False
 
@@ -130,10 +118,11 @@ while True:
         break
 
     beijing_now = get_beijing_time()
-    if beijing_now.timestamp() - start_time_a10s.timestamp() > 0:
+    if cmp_date(beijing_now, start_time_a10s) :
+        print(beijing_now, start_time_a10s)
         break
     print("makeing")
-    time.sleep(0.2)
+    time.sleep(0.1)
 
 print(M)
 print(A)
@@ -151,6 +140,7 @@ h = {
 }
 
 print(json.dumps(d))
+
 
 res = requests.get(url=u, params=d, headers=h)
 print(res.text)
