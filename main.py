@@ -83,8 +83,8 @@ for schedule in schedule_data:
         startTime = schedule['registerStart']
 
 start_time = datetime.strptime(startTime, "%Y-%m-%d %H:%M:%S")
-start_time_p10s = start_time - timedelta(seconds=10)
-start_time_a10s = start_time + timedelta(seconds=10)
+start_time_p10s = start_time - timedelta(seconds=30)
+start_time_a10s = start_time + timedelta(seconds=30)
 beijing_now = get_beijing_time()
 
 print("now:", beijing_now)
@@ -122,7 +122,6 @@ while True:
         print(beijing_now, start_time_a10s)
         break
     print("makeing")
-    time.sleep(0.1)
 
 print(M)
 print(A)
